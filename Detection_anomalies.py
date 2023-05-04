@@ -164,12 +164,12 @@ multi_data_usage['intrusion'] = enc_label_usage
 # droping column label and intrusion and encoding columns protocol_type, service, flag
 multi_data_usage.drop(labels=[ 'label'], axis=1, inplace=True)
 
-def search(liste_services, matrice_services):
-    ensemble_services = set(liste_services)
-    ensemble_services_matrice = set(matrice_services.to_numpy().flatten())
-    services_manquants = list(ensemble_services - ensemble_services_matrice)
-    a = len(services_manquants)
-    return a
+def search(services, data):
+    all_services = set(services)
+    all_services_matrix = set(data.to_numpy().flatten())
+    missing_services = list(all_services - all_services_matrix)
+    total = len(missing_services)
+    return total
 
 count = search(services, multi_data_usage)
 
